@@ -1,4 +1,4 @@
-import handtree from "..assets/handtree.jpg";
+import handtree from "../assets/handtree.jpg";
 
 export default {
   handtree,

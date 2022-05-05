@@ -14,11 +14,22 @@
 
 .home__top-left {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1;
+
+  img {
+    width: 80%;
+    border-radius: 10px;
+    object-fit: contain;
+  }
 }
 
 .home__top-right {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex: 1;
+  padding: 50px;
 }
