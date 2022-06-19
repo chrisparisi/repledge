@@ -5,6 +5,7 @@ const util = require('util');
 require('dotenv').config();
 const { Configuration, PlaidApi, PlaidEnvironments } = require('plaid');
 const cors = require('cors');
+const { sendFile } = require('express/lib/response');
 
 const { errorHandler } = require('./middleware/errorMiddlerware');
 
@@ -17,6 +18,8 @@ app.use(
   })
 );
 app.use(cors());
+
+app.use('/link', require('./routes/plaidRoutes'));
 
 const PORT = process.env.PORT || 3000;
 const PLAID_CLIENT_ID = process.env.PLAID_CLIENT_ID;
@@ -46,6 +49,19 @@ const configuration = new Configuration({
 });
 
 const client = new PlaidApi(configuration);
+
+//Serve frontend
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, '../', 'client', 'build', 'index.html')
+    )
+  );
+} else {
+  app.get('/', (req, res) => res.send('Please set to production'));
+}
 
 app.use(errorHandler);
 
