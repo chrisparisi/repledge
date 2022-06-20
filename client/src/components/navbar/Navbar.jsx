@@ -1,6 +1,7 @@
-import React from "react";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-import "./Navbar.scss";
+import './Navbar.scss';
 
 const Navbar = () => {
   return (
@@ -10,7 +11,12 @@ const Navbar = () => {
       </div>
       <div className="navbar__right">
         <ul>
-          <li>Member Login</li>
+          <Link
+            style={{ color: 'inherit', textDecoration: 'inherit' }}
+            to="/login"
+          >
+            Member Login
+          </Link>
           <li>Get Started Now</li>
         </ul>
       </div>

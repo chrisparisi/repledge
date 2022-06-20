@@ -1,8 +1,8 @@
-import React from "react";
-import Navbar from "../components/navbar/Navbar";
+import React from 'react';
+import Navbar from '../../components/navbar/Navbar';
 
-import "./home.scss";
-import { images } from "../constants";
+import './home.scss';
+import { images } from '../../constants';
 
 const Home = () => {
   return (
