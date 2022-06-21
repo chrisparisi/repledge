@@ -16,7 +16,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-app.use('/link', require('./routes/plaidRoutes'));
+app.use('/api/v1/link', require('./routes/plaidRoutes'));
+app.use('/api/v1/users', require('./routes/userRoutes'));
 
 //Serve frontend
 if (process.env.NODE_ENV === 'production') {
