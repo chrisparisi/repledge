@@ -6,7 +6,7 @@ const {
   exchangeToken,
 } = require('../controllers/plaidControllers');
 
-app.route('/create-link-token').get(createLinkToken);
-app.route('/token-exchange').post(exchangeToken);
+router.route('/create-link-token').get(createLinkToken);
+router.route('/token-exchange').post(exchangeToken);
 
 module.exports = router;
