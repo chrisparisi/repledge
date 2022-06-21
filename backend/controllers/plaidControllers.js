@@ -58,7 +58,7 @@ const exchangeToken = asyncHandler(async (req, res) => {
   console.log('Trans Responese:');
   console.log(util.inspect(transactions, false, null, true));
 
-  res.sendStatus(200);
+  res.send(transactions);
 });
 
 module.exports = { createLinkToken, exchangeToken };
