@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path');
 require('dotenv').config();
 const cors = require('cors');
@@ -7,6 +6,9 @@ const { sendFile } = require('express/lib/response');
 
 const { errorHandler } = require('./middleware/errorMiddleware');
 const port = process.env.PORT || 5000;
+const connectDB = require('./config/db');
+
+connectDB();
 
 const app = express();
 
