@@ -1,15 +1,26 @@
 const asyncHandler = require('express-async-handler');
 const util = require('util');
-const plaid = require('plaid');
+const {
+  Configuration,
+  PlaidApi,
+  PlaidEnvironments,
+  TransactionsGetRequest,
+} = require('plaid');
 
-const plaidClient = new plaid.Client({
-  ClientID: process.env.CLIENT_ID,
-  secret: process.env.SECRET,
-  env: plaid.environments.sandbox,
+const configuration = new Configuration({
+  basePath: PlaidEnvironments[process.env.PLAID_ENV],
+  baseOptions: {
+    headers: {
+      'PLAID-CLIENT-ID': process.env.PLAID_CLIENT_ID,
+      'PLAID-SECRET': process.env.PLAID_SECRET,
+    },
+  },
 });
 
+const client = new PlaidApi(configuration);
+
 const createLinkToken = asyncHandler(async (req, res) => {
-  const { link_token: linkToken } = await plaidClient.createLinkToken({
+  const tokenResponse = await client.linkTokenCreate({
     user: {
       client_user_id: 'unique_id',
     },
@@ -19,31 +30,35 @@ const createLinkToken = asyncHandler(async (req, res) => {
     language: 'en',
   });
 
-  res.json({ linkToken });
+  console.log(tokenResponse.data);
+  res.json(tokenResponse.data);
 });
 
 const exchangeToken = asyncHandler(async (req, res) => {
+  console.log(req.body);
   const { publicToken } = req.body;
-  const { access_token: accessToken } = await plaidClient.exchangePublicToken(
-    publicToken
-  );
+  console.log(publicToken);
+  const response = await client.itemPublicTokenExchange({
+    public_token: publicToken,
+  });
 
-  const authRespone = plaidClient.getAuth(accessToken);
-  console.log('------------');
-  console.log('Auth Responese:');
-  console.log(util.inspect(authRespone, false, null, true));
+  const accessToken = response.data.access_token;
 
-  const identityRespone = plaidClient.getIdentity(accessToken);
-  console.log('------------');
-  console.log('Identity Responese:');
-  console.log(util.inspect(identityRespone, false, null, true));
+  console.log(accessToken);
 
-  const balanceResponse = plaidClient.getBalance(accessToken);
+  const request = {
+    access_token: accessToken,
+    start_date: '2022-01-01',
+    end_date: '2022-12-31',
+  };
+
+  const transResponse = await client.transactionsGet(request);
+  let transactions = transResponse.data.transactions;
   console.log('------------');
-  console.log('Identity Responese:');
-  console.log(util.inspect(balanceResponse, false, null, true));
+  console.log('Trans Responese:');
+  console.log(util.inspect(transactions, false, null, true));
 
   res.sendStatus(200);
 });
 
-module.exports = { createLinkToken };
+module.exports = { createLinkToken, exchangeToken };
