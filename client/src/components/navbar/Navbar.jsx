@@ -20,13 +20,15 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbar__left">
-        <Link to="/">Repledge</Link>
+        <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/">
+          Repledge
+        </Link>
       </div>
       <div className="navbar__right">
         {user ? (
-          <ul>
-            <button onClick={onLogout}>Logout</button>
-          </ul>
+          <button className="btn" onClick={onLogout}>
+            Logout
+          </button>
         ) : (
           <ul>
             <li>

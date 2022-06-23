@@ -1,0 +1,39 @@
+.app {
+  background-color: var(--background-color);
+  font-family: var(--font-base);
+}
+
+.container {
+  min-height: calc(100vh - 109px);
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--mint-color);
+  color: var(--background-color);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+
+  svg {
+    margin-right: 4px;
+  }
+}
+
+.btn-block {
+  width: 20%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}

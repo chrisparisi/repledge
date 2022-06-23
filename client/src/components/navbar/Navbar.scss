@@ -3,8 +3,8 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  position: fixed;
-  z-index: 2;
+  // position: fixed;
+  // z-index: 2;
   background-color: var(--background-color);
   color: var(--mint-color);
 }
@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
 
-  h1 {
+  a {
     font-size: 2rem;
     font-weight: bold;
     margin: 1rem;
@@ -25,6 +25,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  button {
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin: 1rem;
+  }
 
   ul {
     display: flex;

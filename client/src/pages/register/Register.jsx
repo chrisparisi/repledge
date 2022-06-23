@@ -7,6 +7,7 @@ import { FaUser } from 'react-icons/fa';
 import './Register.scss';
 import { register, reset } from '../../features/auth/authSlice';
 import Spinner from '../../components/spinner/Spinner';
+import Navbar from '../../components/navbar/Navbar';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -65,8 +66,9 @@ const Register = () => {
   }
 
   return (
-    <div className="container">
-      <>
+    <>
+      <Navbar />
+      <div className="container">
         <section className="register__heading">
           <h1>
             <FaUser /> Register
@@ -127,8 +129,8 @@ const Register = () => {
             </div>
           </form>
         </section>
-      </>
-    </div>
+      </div>
+    </>
   );
 };
 

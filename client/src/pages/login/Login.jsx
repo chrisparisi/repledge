@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import './Login.scss';
 import { login, reset } from '../../features/auth/authSlice';
 import Spinner from '../../components/spinner/Spinner';
+import Navbar from '../../components/navbar/Navbar';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -58,46 +59,49 @@ const Login = () => {
   }
 
   return (
-    <div className="container">
-      <section className="login__heading">
-        <h1>
-          <FaSignInAlt /> Login
-        </h1>
-        <p>Login and start creating chores!</p>
-      </section>
+    <>
+      <Navbar />
+      <div className="container">
+        <section className="login__heading">
+          <h1>
+            <FaSignInAlt /> Login
+          </h1>
+          <p>Login and start creating chores!</p>
+        </section>
 
-      <section className="login__form">
-        <form onSubmit={onSubmit}>
-          <div className="login__form-group">
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              value={email}
-              placeholder="Enter your email"
-              onChange={onChange}
-            />
-          </div>
-          <div className="login__form-group">
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Enter your password"
-              onChange={onChange}
-            />
-          </div>
-          <div className="login__form-group">
-            <button type="submit" className="btn btn-block">
-              Submit
-            </button>
-          </div>
-        </form>
-      </section>
-    </div>
+        <section className="login__form">
+          <form onSubmit={onSubmit}>
+            <div className="login__form-group">
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                value={email}
+                placeholder="Enter your email"
+                onChange={onChange}
+              />
+            </div>
+            <div className="login__form-group">
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                value={password}
+                placeholder="Enter your password"
+                onChange={onChange}
+              />
+            </div>
+            <div className="login__form-group">
+              <button type="submit" className="btn btn-block">
+                Submit
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </>
   );
 };
 
