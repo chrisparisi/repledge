@@ -24,7 +24,7 @@ const Link = () => {
       setToken(link_token);
     };
     fetchLinkToken();
-  }, [user._id]);
+  }, [user]);
 
   const { open } = usePlaidLink({
     token: token,

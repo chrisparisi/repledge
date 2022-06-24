@@ -52,10 +52,21 @@ const exchangeToken = asyncHandler(async (req, res) => {
   };
 
   const transResponse = await client.transactionsGet(request);
-  let transactions = transResponse.data.transactions;
-  console.log('------------');
-  console.log('Trans Responese:');
-  console.log(util.inspect(transactions, false, null, true));
+  const transactions = transResponse.data.transactions;
+
+  // console.log('------------');
+  // console.log('Trans Responese:');
+  // console.log(util.inspect(transactions, false, null, true));
+
+  const newTransactions = transactionFilter(transactions);
+
+  let value = 0;
+  newTransactions.forEach((transaction) => {
+    value += Math.ceil(transaction.amount) - transaction.amount;
+  });
+  const donation = Math.round(value * 100) / 100;
+
+  console.log(donation);
 
   // const categoryResponse = await client.categoriesGet({});
   // let categories = categoryResponse.data;
@@ -63,9 +74,19 @@ const exchangeToken = asyncHandler(async (req, res) => {
   // console.log('Category Responese:');
   // console.log(util.inspect(categories, false, null, true));
 
-  res.send(transactions);
+  res.send(newTransactions);
 });
 
-const transactionFilter = (data) => {};
+const transactionFilter = (data) => {
+  const filterByTransaction = (data) => {
+    if (data.category.includes('Travel')) {
+      return true;
+    }
+    return false;
+  };
+
+  const filteredData = data.filter(filterByTransaction);
+  return filteredData;
+};
 
 module.exports = { createLinkToken, exchangeToken };
