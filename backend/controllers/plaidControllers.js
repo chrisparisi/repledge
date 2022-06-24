@@ -66,7 +66,7 @@ const exchangeToken = asyncHandler(async (req, res) => {
   });
   const donation = Math.round(value * 100) / 100;
 
-  console.log(donation);
+  console.log(transactions);
 
   // const categoryResponse = await client.categoriesGet({});
   // let categories = categoryResponse.data;
