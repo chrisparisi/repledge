@@ -1,24 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { usePlaidLink } from 'react-plaid-link';
+import { useSelector } from 'react-redux';
+
+import './Link.scss';
+
 const axios = require('axios');
 
 axios.defaults.baseURL = 'http://localhost:5000';
 
-const Login = () => {
+const Link = () => {
+  const { user } = useSelector((state) => state.auth);
   const [token, setToken] = useState('');
   const [transactions, setTransactions] = useState({});
 
   useEffect(() => {
     const fetchLinkToken = async () => {
-      const response = await axios.get('/api/v1/link/create-link-token', {
+      const response = await axios.post('/api/v1/link/create-link-token', {
         proxy: { host: 'localhost', port: '5000' },
+        userId: user._id,
       });
 
       const { link_token } = await response.data;
       setToken(link_token);
     };
     fetchLinkToken();
-  }, []);
+  }, [user._id]);
 
   const { open } = usePlaidLink({
     token: token,
@@ -30,16 +36,18 @@ const Login = () => {
         publicToken,
       });
       setTransactions(transResponse);
-      console.log(transResponse);
+      console.log(transResponse.data);
     },
   });
 
   return (
     <div>
-      <h1>Login</h1>
-      <button onClick={() => open()}>Use Plaid</button>
+      <h1 className="link__heading">Login</h1>
+      <button className="btn" onClick={() => open()}>
+        Use Plaid
+      </button>
     </div>
   );
 };
 
-export default Login;
+export default Link;

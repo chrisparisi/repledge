@@ -20,13 +20,14 @@ const configuration = new Configuration({
 const client = new PlaidApi(configuration);
 
 const createLinkToken = asyncHandler(async (req, res) => {
+  const uniqueId = req.body.userId;
   const tokenResponse = await client.linkTokenCreate({
     user: {
-      client_user_id: 'unique_id',
+      client_user_id: uniqueId,
     },
     client_name: 'repledge test',
-    products: ['transactions'],
-    country_codes: ['US'],
+    products: [process.env.PLAID_PRODUCTS],
+    country_codes: [process.env.PLAID_COUNTRY_CODES],
     language: 'en',
   });
 
@@ -44,8 +45,6 @@ const exchangeToken = asyncHandler(async (req, res) => {
 
   const accessToken = response.data.access_token;
 
-  console.log(accessToken);
-
   const request = {
     access_token: accessToken,
     start_date: '2022-01-01',
@@ -58,7 +57,15 @@ const exchangeToken = asyncHandler(async (req, res) => {
   console.log('Trans Responese:');
   console.log(util.inspect(transactions, false, null, true));
 
+  // const categoryResponse = await client.categoriesGet({});
+  // let categories = categoryResponse.data;
+  // console.log('------------');
+  // console.log('Category Responese:');
+  // console.log(util.inspect(categories, false, null, true));
+
   res.send(transactions);
 });
+
+const transactionFilter = (data) => {};
 
 module.exports = { createLinkToken, exchangeToken };
