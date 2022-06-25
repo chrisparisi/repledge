@@ -74,7 +74,7 @@ const exchangeToken = asyncHandler(async (req, res) => {
   // console.log('Category Responese:');
   // console.log(util.inspect(categories, false, null, true));
 
-  res.send(newTransactions);
+  res.json(newTransactions);
 });
 
 const transactionFilter = (data) => {
