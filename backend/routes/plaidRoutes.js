@@ -4,7 +4,7 @@ const router = express.Router();
 const {
   createLinkToken,
   exchangeToken,
-} = require('../controllers/plaidControllers');
+} = require('../controllers/plaidController');
 
 router.route('/create-link-token').post(createLinkToken);
 router.route('/token-exchange').post(exchangeToken);
