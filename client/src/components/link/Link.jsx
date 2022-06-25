@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { usePlaidLink } from 'react-plaid-link';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { getNewTransactions } from '../../features/transactions/transactionSlice';
 import './Link.scss';
 
 const axios = require('axios');
@@ -9,9 +10,11 @@ const axios = require('axios');
 axios.defaults.baseURL = 'http://localhost:5000';
 
 const Link = () => {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const [token, setToken] = useState('');
-  const [transactions, setTransactions] = useState({});
+  // const [transactions, setTransactions] = useState({});
+  const { transactions } = useSelector((state) => state.transactions);
 
   useEffect(() => {
     const fetchLinkToken = async () => {
@@ -29,14 +32,14 @@ const Link = () => {
   const { open } = usePlaidLink({
     token: token,
     onSuccess: async (publicToken, metadata) => {
-      console.log(publicToken);
-      console.log(metadata);
       const transResponse = await axios.post('/api/v1/link/token-exchange', {
         proxy: { host: 'localhost', port: '5000' },
         publicToken,
       });
-      setTransactions(transResponse);
-      console.log(transResponse.data);
+      dispatch(getNewTransactions(transResponse));
+      console.log(transactions);
+      // setTransactions(transResponse);
+      // console.log(transResponse.data);
     },
   });
 

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import './Dashboard.scss';
 import Navbar from '../../components/navbar/Navbar';
 import Link from '../../components/link/Link';
+import TransactionsComponent from '../../components/transactionsComponent/TransactionsComponent';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -23,7 +24,9 @@ const Dashboard = () => {
         <div className="dashboard__left">
           <Link />
         </div>
-        <div className="dashboard__right"></div>
+        <div className="dashboard__right">
+          <TransactionsComponent />
+        </div>
       </div>
     </div>
   );
