@@ -9,7 +9,12 @@ const TransactionsComponent = () => {
   return (
     <div>
       {transactions.map((transaction) => {
-        return <div key={transaction.transaction_id}>did it work</div>;
+        return (
+          <div key={transaction.transaction_id}>
+            <h3>{transaction.merchant_name}</h3>
+            <h1>{transaction.amount}</h1>
+          </div>
+        );
       })}
     </div>
   );

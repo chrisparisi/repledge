@@ -3,6 +3,7 @@ import { usePlaidLink } from 'react-plaid-link';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getNewTransactions } from '../../features/transactions/transactionSlice';
+import { reset } from '../../features/transactions/transactionSlice';
 import './Link.scss';
 
 const axios = require('axios');
@@ -27,7 +28,7 @@ const Link = () => {
       setToken(link_token);
     };
     fetchLinkToken();
-  }, [user]);
+  }, [user, dispatch]);
 
   const { open } = usePlaidLink({
     token: token,
