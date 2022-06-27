@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import './Navbar.scss';
-import { logout, reset } from '../../features/auth/authSlice';
+import { logout, reset as authReset } from '../../features/auth/authSlice';
+import { reset as transactionReset } from '../../features/transactions/transactionSlice';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -12,7 +13,8 @@ const Navbar = () => {
 
   const onLogout = () => {
     dispatch(logout());
-    dispatch(reset());
+    dispatch(authReset());
+    dispatch(transactionReset());
     navigate('/');
   };
 

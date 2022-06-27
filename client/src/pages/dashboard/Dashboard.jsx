@@ -6,7 +6,6 @@ import './Dashboard.scss';
 import Navbar from '../../components/navbar/Navbar';
 import Link from '../../components/link/Link';
 import TransactionsComponent from '../../components/transactionsComponent/TransactionsComponent';
-import { reset } from '../../features/transactions/transactionSlice';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -18,10 +17,6 @@ const Dashboard = () => {
     if (!user) {
       navigate('/');
     }
-
-    return () => {
-      dispatch(reset());
-    };
   }, [dispatch, navigate, user]);
 
   console.log(transactions);
@@ -31,11 +26,11 @@ const Dashboard = () => {
       <Navbar />
       <div className="dashboard">
         {transactions.length < 1 ? (
-          <div className="dashboard__left">
+          <div className="dashboard__link">
             <Link />
           </div>
         ) : (
-          <div className="dashboard__right">
+          <div className="dashboard__transactions">
             <TransactionsComponent />
           </div>
         )}

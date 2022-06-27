@@ -3,7 +3,6 @@ import { usePlaidLink } from 'react-plaid-link';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getNewTransactions } from '../../features/transactions/transactionSlice';
-import { reset } from '../../features/transactions/transactionSlice';
 import './Link.scss';
 
 const axios = require('axios');
@@ -14,7 +13,6 @@ const Link = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const [token, setToken] = useState('');
-  // const [transactions, setTransactions] = useState({});
   const { transactions } = useSelector((state) => state.transactions);
 
   useEffect(() => {

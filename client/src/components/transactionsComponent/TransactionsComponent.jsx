@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 const TransactionsComponent = () => {
   const { transactions } = useSelector((state) => state.transactions);
 
-  console.log(transactions);
-
   return (
     <div>
       {transactions.map((transaction) => {
