@@ -6,7 +6,7 @@ const TransactionsComponent = () => {
 
   return (
     <div>
-      {transactions.map((transaction) => {
+      {transactions.transactions.map((transaction) => {
         return (
           <div key={transaction.transaction_id}>
             <h3>{transaction.merchant_name}</h3>

@@ -31,6 +31,10 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="dashboard__transactions">
+            <div className="donation">
+              <h2>You should donate</h2>
+              <p>{transactions.donation}</p>
+            </div>
             <TransactionsComponent />
           </div>
         )}

@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const util = require('util');
+const moment = require('moment');
 const {
   Configuration,
   PlaidApi,
@@ -45,18 +46,17 @@ const exchangeToken = asyncHandler(async (req, res) => {
 
   const accessToken = response.data.access_token;
 
+  const startDate = moment().subtract(30, 'days').format('YYYY-MM-DD');
+  const today = moment().format('YYYY-MM-DD');
+
   const request = {
     access_token: accessToken,
-    start_date: '2022-01-01',
-    end_date: '2022-12-31',
+    start_date: startDate,
+    end_date: today,
   };
 
   const transResponse = await client.transactionsGet(request);
   const transactions = transResponse.data.transactions;
-
-  // console.log('------------');
-  // console.log('Trans Responese:');
-  // console.log(util.inspect(transactions, false, null, true));
 
   const newTransactions = transactionFilter(transactions);
 
@@ -66,7 +66,10 @@ const exchangeToken = asyncHandler(async (req, res) => {
   });
   const donation = Math.round(value * 100) / 100;
 
-  console.log(transactions);
+  const returnObject = {
+    donation,
+    transactions: newTransactions,
+  };
 
   // const categoryResponse = await client.categoriesGet({});
   // let categories = categoryResponse.data;
@@ -74,7 +77,7 @@ const exchangeToken = asyncHandler(async (req, res) => {
   // console.log('Category Responese:');
   // console.log(util.inspect(categories, false, null, true));
 
-  res.json(newTransactions);
+  res.json(returnObject);
 });
 
 const transactionFilter = (data) => {
