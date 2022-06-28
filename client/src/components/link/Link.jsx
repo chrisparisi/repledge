@@ -37,8 +37,6 @@ const Link = () => {
       });
       dispatch(getNewTransactions(transResponse));
       console.log(transactions);
-      // setTransactions(transResponse);
-      // console.log(transResponse.data);
     },
   });
 

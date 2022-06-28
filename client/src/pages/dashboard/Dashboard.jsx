@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import './Dashboard.scss';
+import Spinner from '../../components/spinner/Spinner';
 import Navbar from '../../components/navbar/Navbar';
 import Link from '../../components/link/Link';
 import TransactionsComponent from '../../components/transactionsComponent/TransactionsComponent';
@@ -11,7 +12,9 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const { transactions } = useSelector((state) => state.transactions);
+  const { transactions, isLoading } = useSelector(
+    (state) => state.transactions
+  );
 
   useEffect(() => {
     if (!user) {
@@ -20,6 +23,10 @@ const Dashboard = () => {
   }, [dispatch, navigate, user]);
 
   console.log(transactions);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div>
