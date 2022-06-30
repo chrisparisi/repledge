@@ -18,6 +18,16 @@
     font-size: 2rem;
     font-weight: bold;
     margin: 1rem;
+
+    @media screen and (max-width: 450px) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+#login {
+  @media screen and (max-width: 450px) {
+    display: none;
   }
 }
 
@@ -36,21 +46,16 @@
     display: flex;
   }
 
-  li,
-  a {
-    list-style: none;
-    font-size: 1.2rem;
-    padding: 1rem;
-    margin: 1rem;
-    cursor: pointer;
-  }
-
-  li:last-child {
+  li {
     list-style: none;
     background-color: var(--mint-color);
     color: var(--background-color);
     border-radius: 5px;
     transition: all 0.2s ease-in-out;
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin: 1rem;
+    cursor: pointer;
 
     &:hover {
       transform: scale(1.05);

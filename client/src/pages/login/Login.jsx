@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import './Login.scss';
@@ -64,9 +64,16 @@ const Login = () => {
       <div className="container">
         <section className="login__heading">
           <h1>
-            <FaSignInAlt /> Login
+            <FaSignInAlt /> Login and help the planet!
           </h1>
-          <p>Login and start creating chores!</p>
+          <Link
+            to="/register"
+            style={{ color: 'inherit', textDecoration: 'inherit' }}
+          >
+            <p>
+              Need an account? <span>Sign Up!</span>
+            </p>
+          </Link>
         </section>
 
         <section className="login__form">

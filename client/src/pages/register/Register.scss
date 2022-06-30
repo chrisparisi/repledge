@@ -23,9 +23,17 @@
   select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #e6e6e6;
+    border: 1px solid #fff;
     border-radius: 5px;
     margin-bottom: 10px;
     font-family: inherit;
   }
+}
+
+p {
+  color: #fff;
+}
+
+span {
+  color: var(--mint-color);
 }

@@ -37,14 +37,6 @@ const Navbar = () => {
                 style={{ color: 'inherit', textDecoration: 'inherit' }}
                 to="/login"
               >
-                Member Login
-              </Link>
-            </li>
-            <li>
-              <Link
-                style={{ color: 'inherit', textDecoration: 'inherit' }}
-                to="/register"
-              >
                 Get Started
               </Link>
             </li>
