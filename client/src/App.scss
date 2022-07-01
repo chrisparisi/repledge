@@ -4,7 +4,7 @@
 }
 
 .container {
-  min-height: calc(100vh - 109px);
+  min-height: calc(100vh - 86px);
 }
 
 .btn {
@@ -36,4 +36,10 @@
 
 .btn:hover {
   transform: scale(1.05);
+}
+
+.card {
+  background-color: var(--secondary-color);
+  margin: 10px 15px;
+  box-shadow: var(--secondary-color) 1.95px 1.95px 2.6px;
 }

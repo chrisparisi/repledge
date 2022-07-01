@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { GiFruitTree } from 'react-icons/gi';
 
 import './home.scss';
-import { images } from '../../constants';
+// import { images } from '../../constants';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -27,8 +27,9 @@ const Home = () => {
             <GiFruitTree />
             <h2 className="home__header">Round Up and Offset</h2>
             <p>
-              Repledge helps you round up your purchases that may have increased
-              your carbon footprint and donate to causes that offset it.
+              Repledge helps you figure out what purchases may have increased
+              your carbon footprint and donate to causes that will help offset
+              it.
             </p>
           </div>
         </div>

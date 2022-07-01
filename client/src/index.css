@@ -4,12 +4,13 @@
   --font-base: 'Space Grotesk', sans-serif;
 
   --primary-color: #edf2f8;
-  --secondary-color: #3b684d;
-  --mint-color: #4de2bc;
+  --secondary-color: #284b52;
+  /* --mint-color2: #4de2bc; */
+  --mint-color: #01c38d;
   --lightGray-color: #e4e4e4;
   --background-color: #222;
   --brown-color: #46364a;
-  --white-color: #ffffff;
+  --white-color: #fff;
 }
 
 * {

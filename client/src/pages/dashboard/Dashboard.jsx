@@ -29,24 +29,26 @@ const Dashboard = () => {
   }
 
   return (
-    <div>
+    <>
       <Navbar />
-      <div className="dashboard">
-        {transactions.length < 1 ? (
-          <div className="dashboard__link">
-            <Link />
-          </div>
-        ) : (
-          <div className="dashboard__transactions">
-            <div className="donation">
-              <h2>You should donate</h2>
-              <p>{transactions.donation}</p>
+      <div className="container">
+        <div className="dashboard">
+          {transactions.length < 1 ? (
+            <div className="dashboard__link">
+              <Link />
             </div>
-            <TransactionsComponent />
-          </div>
-        )}
+          ) : (
+            <div className="dashboard__transactions">
+              <div className="donation">
+                <h2>You should donate</h2>
+                <p>{transactions.donation}</p>
+              </div>
+              <TransactionsComponent />
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

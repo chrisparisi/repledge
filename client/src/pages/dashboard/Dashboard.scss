@@ -1,6 +1,8 @@
 .dashboard {
   display: flex;
   min-height: calc(100vh - 109px);
+  width: 100%;
+  position: relative;
 }
 
 .dashboard__link {

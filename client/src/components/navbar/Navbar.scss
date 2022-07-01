@@ -48,9 +48,13 @@
 
   li {
     list-style: none;
+  }
+
+  button {
     background-color: var(--mint-color);
     color: var(--background-color);
     border-radius: 5px;
+    border: none;
     transition: all 0.2s ease-in-out;
     font-size: 1.2rem;
     padding: 1rem;
