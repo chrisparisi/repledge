@@ -39,9 +39,9 @@ const Dashboard = () => {
             </div>
           ) : (
             <div className="dashboard__transactions">
-              <div className="donation">
-                <h2>You should donate</h2>
-                <p>{transactions.donation}</p>
+              <div className="donation card">
+                <h2>Your offset donation should be:</h2>
+                <h3>$ {transactions.donation}</h3>
               </div>
               <TransactionsComponent />
             </div>

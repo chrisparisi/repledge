@@ -16,6 +16,9 @@
 
 .login__form-group {
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   input,
   select {
@@ -25,5 +28,6 @@
     border-radius: 5px;
     margin-bottom: 10px;
     font-family: inherit;
+    max-width: 400px;
   }
 }

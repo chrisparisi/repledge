@@ -1,0 +1,27 @@
+.transactions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: black;
+  color: var(--white-color);
+  width: 80%;
+  border-radius: 5px;
+
+  .transactions__header {
+    color: var(--mint-color);
+  }
+
+  .transaction__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    h2,
+    h3 {
+      text-align: center;
+    }
+  }
+}
