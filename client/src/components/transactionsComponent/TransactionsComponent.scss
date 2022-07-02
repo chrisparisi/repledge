@@ -5,11 +5,12 @@
   flex-direction: column;
   background-color: black;
   color: var(--white-color);
-  width: 80%;
+  width: 100%;
   border-radius: 5px;
 
   .transactions__header {
     color: var(--mint-color);
+    padding-top: 15px;
   }
 
   .transaction__item {
@@ -18,6 +19,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin: 20px;
 
     h2,
     h3 {

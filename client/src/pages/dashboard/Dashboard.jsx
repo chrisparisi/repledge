@@ -7,6 +7,7 @@ import Spinner from '../../components/spinner/Spinner';
 import Navbar from '../../components/navbar/Navbar';
 import Link from '../../components/link/Link';
 import TransactionsComponent from '../../components/transactionsComponent/TransactionsComponent';
+import Charities from '../../components/charities/Charities';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ const Dashboard = () => {
                 <h2>Your offset donation should be:</h2>
                 <h3>$ {transactions.donation}</h3>
               </div>
+              <Charities />
               <TransactionsComponent />
             </div>
           )}
