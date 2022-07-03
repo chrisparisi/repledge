@@ -11,6 +11,15 @@
   .transactions__header {
     color: var(--mint-color);
     padding-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 1200px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
   }
 
   .transaction__item {

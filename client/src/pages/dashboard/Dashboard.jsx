@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { GiEarthAmerica } from 'react-icons/gi';
 
 import './Dashboard.scss';
 import Spinner from '../../components/spinner/Spinner';
@@ -41,6 +42,7 @@ const Dashboard = () => {
           ) : (
             <div className="dashboard__transactions">
               <div className="donation card">
+                <GiEarthAmerica />
                 <h2>Your offset donation should be:</h2>
                 <h3>$ {transactions.donation}</h3>
               </div>
