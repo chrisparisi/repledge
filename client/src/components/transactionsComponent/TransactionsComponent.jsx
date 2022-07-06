@@ -25,10 +25,10 @@ const TransactionsComponent = () => {
               <h3>{transaction.merchant_name}</h3>
             </div>
             <div className="item__center">
-              <h2>{transaction.amount}</h2>
+              <h3>$ {transaction.amount.toFixed(2)}</h3>
             </div>
             <div className="item__right">
-              <h2>+ {rounder(transaction.amount)}</h2>
+              <h3>+ {rounder(transaction.amount)}</h3>
             </div>
           </div>
         );

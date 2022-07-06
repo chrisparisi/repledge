@@ -37,7 +37,7 @@ const Navbar = () => {
                 style={{ color: 'inherit', textDecoration: 'inherit' }}
                 to="/login"
               >
-                <button>Get Started</button>
+                <button className="btn">Get Started</button>
               </Link>
             </li>
           </ul>

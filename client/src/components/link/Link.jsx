@@ -48,7 +48,7 @@ const Link = () => {
         transactions in the last 30 days you may want to offset with a donation
         to one of your favorite charities!
       </p>
-      <button className="btn" onClick={() => open()}>
+      <button className="btn btn-block" onClick={() => open()}>
         Get Your Transactions
       </button>
     </div>

@@ -37,7 +37,11 @@
 
     .item__center {
       position: absolute;
-      right: 125px;
+      right: 100px;
+
+      h3 {
+        font-size: 1.1rem;
+      }
     }
 
     .item__right {
