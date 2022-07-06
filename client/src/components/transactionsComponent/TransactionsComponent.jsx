@@ -6,6 +6,12 @@ import './TransactionsComponent.scss';
 const TransactionsComponent = () => {
   const { transactions } = useSelector((state) => state.transactions);
 
+  const rounder = (amount) => {
+    let value = Math.ceil(amount) - amount;
+    value = value.toFixed(2);
+    return value;
+  };
+
   return (
     <div className="transactions">
       <div className="transactions__header">
@@ -14,9 +20,16 @@ const TransactionsComponent = () => {
       {transactions.transactions.map((transaction) => {
         return (
           <div className="transaction__item" key={transaction.transaction_id}>
-            <h3>{transaction.merchant_name}</h3>
-            <p>{transaction.date}</p>
-            <h2>{transaction.amount}</h2>
+            <div className="item__left">
+              <p>{transaction.date}</p>
+              <h3>{transaction.merchant_name}</h3>
+            </div>
+            <div className="item__center">
+              <h2>{transaction.amount}</h2>
+            </div>
+            <div className="item__right">
+              <h2>+ {rounder(transaction.amount)}</h2>
+            </div>
           </div>
         );
       })}
