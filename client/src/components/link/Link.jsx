@@ -44,7 +44,7 @@ const Link = () => {
     <div className="link">
       <h1 className="link__heading">Login to your bank account</h1>
       <p>
-        Once you link your bank account to Repledge, together we can see what
+        Once you link your bank account to Repledge, together we can see which
         transactions in the last 30 days you may want to offset with a donation
         to one of your favorite charities!
       </p>

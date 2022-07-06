@@ -6,6 +6,12 @@
   width: 100%;
   position: absolute;
 
+  h1 {
+    @media screen and (max-width: 450px) {
+      font-size: 1.4rem;
+    }
+  }
+
   p {
     padding: 15px;
     margin: 10px;
