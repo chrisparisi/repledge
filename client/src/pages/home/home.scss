@@ -29,10 +29,6 @@
   box-shadow: var(--secondary-color) 1.95px 1.95px 2.6px;
   max-width: 800px;
 
-  @media screen and (min-width: 1200px) {
-    flex-direction: row;
-  }
-
   img,
   svg {
     width: 80%;
