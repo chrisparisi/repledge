@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { usePlaidLink } from 'react-plaid-link';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
 import { getNewTransactions } from '../../features/transactions/transactionSlice';
 import './Link.scss';
 
-const axios = require('axios');
+// const axios = require('axios');
 
-axios.defaults.baseURL = 'http://localhost:5000';
+// axios.defaults.baseURL = 'http://localhost:5000';
 
 const Link = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Link = () => {
   useEffect(() => {
     const fetchLinkToken = async () => {
       const response = await axios.post('/api/v1/link/create-link-token', {
-        proxy: { host: 'localhost', port: '5000' },
+        // proxy: { host: 'localhost', port: '5000' },
         userId: user._id,
       });
 
@@ -32,7 +33,7 @@ const Link = () => {
     token: token,
     onSuccess: async (publicToken, metadata) => {
       const transResponse = await axios.post('/api/v1/link/token-exchange', {
-        proxy: { host: 'localhost', port: '5000' },
+        // proxy: { host: 'localhost', port: '5000' },
         publicToken,
       });
       dispatch(getNewTransactions(transResponse));
