@@ -4,7 +4,7 @@ This is a full stack app designed to allow a user to see what sort of transactio
 
 It uses React for the front end with Sass for styling, and Redux Toolkit for state management.
 
-Backend uses NodeJS and Express, and the Plaid API is used to allow a user to link their bank account.
+Backend uses NodeJS and Express, and the Plaid API is used to allow a user to link their bank account. Once the users bank account is linked, the Repledge backend filters transactions and sends the client the filtered data with a donation amount suggestion.
 
 The biggest learning takeaway here was learning how Plaid API worked, and how their Link component communicates with the backend and client.
 
