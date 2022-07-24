@@ -22,6 +22,7 @@ const client = new PlaidApi(configuration);
 
 const createLinkToken = asyncHandler(async (req, res) => {
   const uniqueId = req.body.userId;
+
   const tokenResponse = await client.linkTokenCreate({
     user: {
       client_user_id: uniqueId,
@@ -64,6 +65,7 @@ const exchangeToken = asyncHandler(async (req, res) => {
   newTransactions.forEach((transaction) => {
     value += Math.ceil(transaction.amount) - transaction.amount;
   });
+
   const donation = Math.round(value * 100) / 100;
 
   const returnObject = {

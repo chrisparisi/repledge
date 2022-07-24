@@ -18,13 +18,16 @@ const Link = () => {
 
   useEffect(() => {
     const fetchLinkToken = async () => {
-      const response = await axios.post('/api/v1/link/create-link-token', {
-        // proxy: { host: 'localhost', port: '5000' },
-        userId: user._id,
-      });
+      try {
+        const response = await axios.post('/api/v1/link/create-link-token', {
+          userId: user._id,
+        });
 
-      const { link_token } = await response.data;
-      setToken(link_token);
+        const { link_token } = await response.data;
+        setToken(link_token);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchLinkToken();
   }, [user, dispatch]);
@@ -33,7 +36,6 @@ const Link = () => {
     token: token,
     onSuccess: async (publicToken, metadata) => {
       const transResponse = await axios.post('/api/v1/link/token-exchange', {
-        // proxy: { host: 'localhost', port: '5000' },
         publicToken,
       });
       dispatch(getNewTransactions(transResponse));
