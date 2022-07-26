@@ -24,8 +24,6 @@ const Dashboard = () => {
     }
   }, [dispatch, navigate, user]);
 
-  console.log(transactions);
-
   if (isLoading) {
     return <Spinner />;
   }
